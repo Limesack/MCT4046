@@ -9,9 +9,9 @@ nchnls = 2
 0dbfs = 1
 
   // TABLES
-    giRGB_R ftgen 0, 0, 0, -2 ,231, 134, 160, 69, 114, 43, 78, 147, 152, 24, 207, 40, 63, 51, 196, 98
-    giRGB_G ftgen 0, 0, 0, -2 ,160, 98, 222, 79, 182, 162, 180, 249, 163, 36, 199, 59, 3, 108, 141, 27
-    giRGB_B ftgen 0, 0, 0, -2 ,106, 204, 80, 244, 230, 214, 41, 191, 28, 86, 231, 151, 146, 45, 162, 56
+    giRGB_R ftgen 0, 0, 0, -2, 231, 134, 160, 69, 114, 43, 78, 147, 152, 24, 207, 40, 63, 51, 196, 98
+    giRGB_G ftgen 0, 0, 0, -2, 160, 98, 222, 79, 182, 162, 180, 249, 163, 36, 199, 59, 3, 108, 141, 27
+    giRGB_B ftgen 0, 0, 0, -2, 106, 204, 80, 244, 230, 214, 41, 191, 28, 86, 231, 151, 146, 45, 162, 56
 
 // CONTROLLER INSTRUMENT
 instr 1
@@ -21,18 +21,19 @@ instr 1
     ktrigger metro ktriggercps
 
   // INDEX TABLE
-    kindex init 0
+    kindex init -1
     if ktrigger == 1 then
       kindex += 1
       if kindex >= ftlen(giRGB_B-1) then
         kindex = 0
       endif
     endif
+
   // READ FROM TABLE, NORMALIZED
-    ifn = giRGB_R // Function Table
     ixmode = 0 // ixmode - index data mode: 1 Normalized, 0 Non-Normalized
     ixoff = 0 // ixoff - amount by which index is to be offset.
     iwrap = 0 // iwrap - wraparound index flag
+    ifn = giRGB_R // Function Table
     kFrequency_R table kindex, ifn, ixmode, ixoff, iwrap
     ifn = giRGB_G // Function Table
     kFrequency_G table kindex, ifn, ixmode, ixoff, iwrap
@@ -48,8 +49,9 @@ instr 1
     kDuration = 1/ktriggercps // duration of event
     //kFrequency = // Frequency sent from table to instrument
     schedkwhen ktrigger, kmintim, kmaxnum, kinsnum, kwhen, kDuration, kFrequency_R, kFrequency_G, kFrequency_B
+    printk2 kindex
+    printk2 kFrequency_G
 
-printk2 kFrequency_G
 endin
 
 
