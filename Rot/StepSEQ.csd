@@ -17,29 +17,33 @@ nchnls = 2
 instr 1
 
   // CLOCK
-    ktriggercps = 1 // frequency of trigger bangs in cps.
+    ktriggercps = 4 // frequency of trigger bangs in cps.
     ktrigger metro ktriggercps
 
   // INDEX TABLE
-
-
+    kindex init 0
+    if ktrigger == 1 then
+      kindex += 1
+      if kindex >= ftlen(giRGB_B-1) then
+        kindex = 0
+      endif
+    endif
   // READ FROM TABLE, NORMALIZED
     ifn = giRGB_B // Function Table
     ixmode = 0 // ixmode - index data mode: 1 Normalized, 0 Non-Normalized
     ixoff = 0 // ixoff - amount by which index is to be offset.
     iwrap = 0 // iwrap - wraparound index flag
-    kNorm table kIndex, ifn, ixmode, ixoff, iwrap
+    kFrequency table kindex, ifn, ixmode, ixoff, iwrap
 
-
-
+    printk2 kFrequency
   // INSTRUMENT TRIGGER
     //ktrigger = // triggers a new score event. If ktrigger = 0, no new event is triggered.
     kmintim = 0 // minimum time between generated events, in seconds.
     kmaxnum = 1 // maximum number of simultaneous instances of instrument kinsnum allowed.
-    kinsnu = 2 // instrument number
-    kwhen = // start time of the new event.
-    kDuration = ktriggercps // duration of event
-    kFrequency = // Frequency sent from table to instrument
+    kinsnum = 2 // instrument number
+    kwhen = 0 // start time of the new event.
+    kDuration = 0.25 // duration of event
+  //  kFrequency = // Frequency sent from table to instrument
     schedkwhen ktrigger, kmintim, kmaxnum, kinsnum, kwhen, kDuration, kFrequency
 
 endin
@@ -47,6 +51,12 @@ endin
 
 // Test oscilator
 instr 2
+
+  aout oscili 0.3, p4
+
+  aEnv madsr p3*0.2, p3*1, p3*0.2, p3*0.5
+
+  outs aout*aEnv,aout*aEnv
 
 endin
 
