@@ -17,7 +17,7 @@ nchnls = 2
 instr 1
 
   // CLOCK
-    ktriggercps = 4 // frequency of trigger bangs in cps.
+    ktriggercps = p4 // frequency of trigger bangs in cps.
     ktrigger metro ktriggercps
 
   // INDEX TABLE
@@ -29,39 +29,49 @@ instr 1
       endif
     endif
   // READ FROM TABLE, NORMALIZED
-    ifn = giRGB_B // Function Table
+    ifn = giRGB_R // Function Table
     ixmode = 0 // ixmode - index data mode: 1 Normalized, 0 Non-Normalized
     ixoff = 0 // ixoff - amount by which index is to be offset.
     iwrap = 0 // iwrap - wraparound index flag
-    kFrequency table kindex, ifn, ixmode, ixoff, iwrap
+    kFrequency_R table kindex, ifn, ixmode, ixoff, iwrap
+    ifn = giRGB_G // Function Table
+    kFrequency_G table kindex, ifn, ixmode, ixoff, iwrap
+    ifn = giRGB_B // Function Table
+    kFrequency_B table kindex, ifn, ixmode, ixoff, iwrap
 
-    printk2 kFrequency
   // INSTRUMENT TRIGGER
     //ktrigger = // triggers a new score event. If ktrigger = 0, no new event is triggered.
     kmintim = 0 // minimum time between generated events, in seconds.
-    kmaxnum = 1 // maximum number of simultaneous instances of instrument kinsnum allowed.
+    kmaxnum = 2 // maximum number of simultaneous instances of instrument kinsnum allowed.
     kinsnum = 2 // instrument number
     kwhen = 0 // start time of the new event.
-    kDuration = 0.25 // duration of event
-  //  kFrequency = // Frequency sent from table to instrument
-    schedkwhen ktrigger, kmintim, kmaxnum, kinsnum, kwhen, kDuration, kFrequency
+    kDuration = 1/ktriggercps // duration of event
+    //kFrequency = // Frequency sent from table to instrument
+    schedkwhen ktrigger, kmintim, kmaxnum, kinsnum, kwhen, kDuration, kFrequency_R, kFrequency_G, kFrequency_B
 
+printk2 kFrequency_G
 endin
 
 
 // Test oscilator
 instr 2
 
-  aout oscili 0.3, p4
+  aR oscili 0.3, p4*2 // R
+  aG oscili 0.3, p5*4 // G
+  aB oscili 0.3, p6*8 // B
 
-  aEnv madsr p3*0.2, p3*1, p3*0.2, p3*0.5
+  aEnv madsr p3*0.25, p3*0.25, 1, p3*0.4999
 
-  outs aout*aEnv,aout*aEnv
+  outs ((aR+aG+aB)*aEnv)*0.5,((aR+aG+aB)*aEnv)*0.5
 
 endin
 
 </CsInstruments>
 <CsScore>
-i1 0 32
+      // P4 controlls notes per second
+i1 0 4 6
+i1 + 4 12
+i1 + 4 1
+i1 + 4 0.25
 </CsScore>
 </CsoundSynthesizer>
