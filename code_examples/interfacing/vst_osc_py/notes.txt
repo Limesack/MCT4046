@@ -1,0 +1,8 @@
+Here is a project that uses a combination of interfaces. It is a Cabbage/VST plugin that communicates with Python via OSC. Python runs as a separate process in the background. The plugin is an "interval vector harmonizer", where incoming midi notes are harmonized using a dynamic chord structure based on interval vectors. You can record new interval vectors, just play a chord on a channel where recording is enabled. Enable "playback" to make it harmonize notes on that channel. It is possible to enable both record and playback at the same time, but I think it is usually more useful to do one a a time. First record and then just harmonize.
+The plugin does not make any sound, so must be connected to another synthesizer plugin (midi in).
+
+Compile the plugin with Cabbage (the csd file osc_vectorHarmonizer.csd)
+Load the plugin on a midi track, and start the Python process in a terminal window (python osc_vectorHarmonizer.py)
+Requires osc4py3 (https://pypi.org/project/osc4py3/)
+
+The Python code is a mess, sorry about that... :-)

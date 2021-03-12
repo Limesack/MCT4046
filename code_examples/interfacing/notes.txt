@@ -1,0 +1,14 @@
+* Recommend Csound 6.15 (or higher), Python 3.8
+
+* Interface to Csound from Python:
+* install ctcsound: with pip
+* ctcsound tutorial in Jupyter notebook
+* See: https://github.com/csound/ctcsound
+
+* Interface to Csound from HTML:
+* WASM Web Assembly Module: WebAudio Csound
+* Copy javascript modules to your own web projects
+* See: https://waaw.csound.com/, https://waaw.csound.com/docs/index.html
+
+* To use OSC with Python: pip install osc4py3
+https://pypi.org/project/osc4py3/
