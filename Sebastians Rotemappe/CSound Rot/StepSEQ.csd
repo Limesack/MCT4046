@@ -21,10 +21,10 @@ instr 1
     ktrigger metro ktriggercps
 
   // INDEX TABLE
-    kindex init -1
+  kindex init -1  // Initialize at -1 so the first index in the table is read
     if ktrigger == 1 then
       kindex += 1
-      if kindex >= ftlen(giRGB_B-1) then
+      if kindex >= ftlen(giRGB_B-1) then // reads the full lenght of the table and then repeats
         kindex = 0
       endif
     endif
@@ -49,8 +49,6 @@ instr 1
     kDuration = 1/ktriggercps // duration of event
     //kFrequency = // Frequency sent from table to instrument
     schedkwhen ktrigger, kmintim, kmaxnum, kinsnum, kwhen, kDuration, kFrequency_R, kFrequency_G, kFrequency_B
-    printk2 kindex
-    printk2 kFrequency_G
 
 endin
 
