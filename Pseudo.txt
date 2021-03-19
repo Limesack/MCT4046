@@ -1,0 +1,83 @@
+
+
+STEPseq
+
+//GUI & OPTIONS – html/online
+
+set parameters for image-seq:
+	choose pixelated img.size:
+		horisontal steps (1, 16)
+		vertical size (1, 16)
+		
+set BPM (60-240):
+
+from computer:
+	load img
+	display orig img
+	display pixelated img
+
+if play is true:
+	play sequence
+	??(panning: 1st row -> L, last row -> R)
+	display stop
+		if stop is true:
+			break
+	
+
+
+//SYNTHESIZE img
+
+if vertSize == 1 {
+	(0.299*R + 0.587*G + 0.114*B) * 0.5 = midiNote to FMsynth (or preferred)
+	}
+
+else if vertSize == 2 {
+	row 2: (0.299*R + 0.587*G + 0.114*B) * (-0.5)  = noise amount		#low value => more noise
+	row 1: (0.299*R + 0.587*G + 0.114*B) * 0.5 = midiNote to FMsynth (or preferred)
+	}
+
+else if vertSize == 3 {
+	row 3: R+G+B(0-765) / 765 * 0.9 = amplitude Release
+	row 2: (0.299*R + 0.587*G + 0.114*B) * (-0.5)  = noise amount		#low value => more noise
+	row 1: (0.299*R + 0.587*G + 0.114*B) * 0.5 = midiNote to FMsynth (or preferred)
+	}
+
+
+
+// 16 parameters
+
+row 16:
+row 15:
+row 14:
+row 13:
+row 12:
+row 11:
+row 10:
+row 9:
+row 8:
+row 7:
+row 6:	
+row 5:	if perceived warm colored: 
+		(R-B)>0, then input row 1 to warm (lowpass) filter = (R-B)/255
+row 4:	if perceived cold colored: 
+		(B-R)>0, then input row 1 to cold (highpass) filter = (B-R)/255
+row 3:	the more towards white, the longer release of tone: 
+		R+G+B(0-765) / 765 * 0.9 = amplitude Release
+row 2:	negativ luminence to noise: 
+		(0.299*R + 0.587*G + 0.114*B) * (-0.5)  = noise amount		#low value => more noise
+row 1:	luminence (brightness) to midiNote: 
+		(0.299*R + 0.587*G + 0.114*B) * 0.5 = midiNote to FMsynth (or preferred)
+	#luminance: https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
+
+
+
+
+
+//MASTER
+
+mute rows:
+	if MUTE button is pressed
+		mute corresponding row
+	else
+		play corresponding row
+
