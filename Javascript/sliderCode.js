@@ -1,9 +1,14 @@
 var scaledHeight = 1;
 var scaledWidth = 16;
+var sensiScale = 0.2;
+var sustain = 0.1;
+
 
 let heightslider = document.getElementById("scaledHeight");
 let witdthslider = document.getElementById("scaledWidth");
-
+let sensitivity = document.getElementById("sensitivity");
+let sustainSlider = document.getElementById("sustain");
+let volumeSlider = document.getElementById("volume");
 
 const allRanges = document.querySelectorAll(".range-wrap");
 allRanges.forEach(wrap => {
@@ -28,11 +33,26 @@ function setBubble(range, bubble) {
 }
 
 witdthslider.oninput = function() {
-    scaledHeight = this.value;
+    scaledWidth = this.value;
 
     }
 
 heightslider.oninput = function() {
-    scaledWidth = this.value;
+    scaledHeight= this.value;
 
     }
+
+sensitivity.oninput = function() {
+  sensiScale = this.value;
+
+  }
+
+sustainSlider.oninput = function() {
+  sustain = this.value;
+
+  }
+
+volumeSlider.oninput = function() {
+  gainNode.gain.value = this.value;
+
+  }
