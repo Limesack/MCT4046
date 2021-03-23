@@ -21,24 +21,17 @@ const keys = new Tone.Players({
         2: "HH.wav",
         3: "OH.wav",
     },
-//    urls: {
-//        0: "A1.mp3",
-//        1: "Cs2.mp3",
-//        2: "E2.mp3",
-//        3: "Fs2.mp3",
-//    },
-  //  fadeOut: "64n",
-  //  baseUrl: "https://tonejs.github.io/audio/casio/"
-      baseUrl: "https://limesack.github.io/MCT4046/Javascript/Moog/"
+
+      baseUrl: "https://limesack.github.io/MCT4046/Javascript/Medusa/"
 //    baseUrl: "/Medusa/"
-  //  file:"//Medusa"
+
 }).toDestination();
 
 document.querySelector("tone-play-toggle").addEventListener("start", () => Tone.Transport.start());
 document.querySelector("tone-play-toggle").addEventListener("stop", () => Tone.Transport.stop());
 document.querySelector("tone-slider").addEventListener("input", (e) => Tone.Transport.bpm.value = parseFloat(e.target.value));
 document.querySelector("tone-step-sequencer").addEventListener("trigger", ({ detail }) => {
-    keys.player(detail.row).start(detail.time, 0, "1t");
+    keys.player(detail.row).start(detail.time, 0, "0t");
 });
 
 ////////
