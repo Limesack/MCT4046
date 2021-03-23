@@ -113,7 +113,11 @@ const synth = new Tone.MonoSynth({
     release: 2,
     sustain: 0.5,
   }
-}).connect(autoFilter1);
+}).connect(chorus);
+
+const chorus = new Tone.Chorus(4, 2.5, 0.5).connect(autoFilter1).start();
+
+
 
 
 const synth2 = new Tone.FMSynth().connect(autoFilter2);
