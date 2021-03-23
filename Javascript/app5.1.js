@@ -17,12 +17,12 @@ let normalize = generateScaleFunction(-0.5, 1, 0, 1);
 const keys = new Tone.Players({
     urls: {
         0: "BD.wav",
-        1: "SD.wav",
+        1: "SDRoom.wav",
         2: "HH.wav",
         3: "OH.wav",
     },
 
-      baseUrl: "https://limesack.github.io/MCT4046/Javascript/Medusa/"
+      baseUrl: "https://limesack.github.io/MCT4046/Javascript/Medoog/"
 //    baseUrl: "/Medusa/"
 
 }).toDestination();
