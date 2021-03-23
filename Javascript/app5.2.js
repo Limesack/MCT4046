@@ -106,19 +106,19 @@ const synth = new Tone.DuoSynth({
     type: "lowpass",
 	},
   filterEnvelope: {
-    attack: 0.6,
+    attack: 0.005,
     baseFrequency: 200,
-    decay: 0.2,
+    decay: 0.1,
     exponent: 2,
     octaves: 3,
     release: 2,
-    sustain: 0.5,
+    sustain: 1,
   },
   Detune: {
-    cents: 10
+    cents: 1000
   },
 });
-duoSynth.harmonicity.value = 1;
+duoSynth.harmonicity.value = 2;
 
 // SENDS SYNTH CHAIN TO OUPUT
 synth.chain(chorus, autoFilter1);
