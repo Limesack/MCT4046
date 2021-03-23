@@ -98,7 +98,7 @@ const synth = new Tone.MonoSynth({
     attack: 0.005,
     decay: 0.1,
     release: 1,
-    sustain: 0.9,
+  //  sustain: 0.9,
 	},
 	filter: {
     Q: 1,
