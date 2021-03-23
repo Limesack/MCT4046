@@ -113,10 +113,10 @@ const synth = new Tone.DuoSynth({
     octaves: 3,
     release: 2,
     sustain: 1,
-  },
+  },/*
   Detune: {
-    cents: 1000
-  },
+    cents: 10
+  },*/
 });
 duoSynth.harmonicity.value = 2;
 
