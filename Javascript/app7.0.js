@@ -4,10 +4,10 @@
 // Sequencer code borrowed from Tone.js examples https://tonejs.github.io/examples/stepSequencer:
 const keys = new Tone.Players({
     urls: {
-        0: "/Javascript/Moog/BD.wav",
-        1: "/Javascript/Moog/SD.wav",
-        2: "/Javascript/Moog/HH.wav",
-        3: "/Javascript/Moog/OH.wav",
+        0: "./Moog/BD.wav",
+        1: "./Moog/SD.wav",
+        2: "./Moog/HH.wav",
+        3: "./Moog/OH.wav",
     },
 //    urls: {
 //        0: "A1.mp3",
