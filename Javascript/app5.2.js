@@ -121,7 +121,7 @@ const synth = new Tone.DuoSynth({
 duoSynth.harmonicity.value = 1;
 
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(chorus, gainNode1);
+synth.chain(chorus, autoFilter1);
 
 /*
 
