@@ -5,7 +5,7 @@
 const keys = new Tone.Players({
     urls: {
         0: "./Moog/BD.wav",
-        1: "./Moog/SD.wav",
+        1: "./Moog/SDRoom.wav",
         2: "./Moog/HH.wav",
         3: "./Moog/OH.wav",
     },
@@ -25,7 +25,7 @@ document.querySelector("tone-play-toggle").addEventListener("start", () => Tone.
 document.querySelector("tone-play-toggle").addEventListener("stop", () => Tone.Transport.stop());
 document.querySelector("tone-slider").addEventListener("input", (e) => Tone.Transport.bpm.value = parseFloat(e.target.value));
 document.querySelector("tone-step-sequencer").addEventListener("trigger", ({ detail }) => {
-    keys.player(detail.row).start(detail.time, 0, "16t");
+    keys.player(detail.row).start(detail.time, 0, "0t");
 });
 
 ////////
@@ -139,7 +139,7 @@ let brightness16 = [];
                 var img1 = document.querySelector('img');
     cv = document.querySelector("#cv");
     c = cv.getContext("2d");
-    
+
     pre1 = document.querySelector("pre1")
     pre2 = document.querySelector("pre2")
     pre3 = document.querySelector("pre3")
@@ -147,10 +147,10 @@ let brightness16 = [];
 
     //img1 = new Image();
     img1.crossOrigin = "Anonymous"; // to bypass cors for imgur image link
-    
+
     //img1.src = 'assets/colours.jpg';
     img1.src = URL.createObjectURL(this.files[0]); // set src to blob url
-    
+
     img1.onload = function() {
 
         URL.revokeObjectURL(img1.src);  // no longer needed, free memory
@@ -158,17 +158,17 @@ let brightness16 = [];
         var idata = c.getImageData(0, 0, scaledWidth, scaledHeight);
         getPixels(idata);
 
-        //// code for pixelating 
+        //// code for pixelating
 
         var width = scaledWidth * 37.5; // the size of the pixels
         var height = scaledHeight * 37.5;
 
-      
+
         // Create canvas element.
         var canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
-      
+
         // This is what gives us that blocky pixel styling, rather than a blend between pixels.
         canvas.style.cssText = 'image-rendering: optimizeSpeed;' + // FireFox < 6.0
                                'image-rendering: -moz-crisp-edges;' + // FireFox
@@ -178,37 +178,37 @@ let brightness16 = [];
                                'image-rendering: -webkit-optimize-contrast;' + // Safari
                                'image-rendering: pixelated; ' + // Future browsers
                                '-ms-interpolation-mode: nearest-neighbor;'; // IE
-      
+
         // Grab the drawing context object. It's what lets us draw on the canvas.
         var context = canvas.getContext('2d');
-      
+
         // Use nearest-neighbor scaling when images are resized instead of the resizing algorithm to create blur.
         context.webkitImageSmoothingEnabled = false;
         context.mozImageSmoothingEnabled = false;
         context.msImageSmoothingEnabled = false;
         context.imageSmoothingEnabled = false;
 
-      
+
         // Render image smaller.
         context.drawImage(img1, 0, 0, scaledWidth, scaledHeight);
-      
+
         // Stretch the smaller image onto larger context.
         context.drawImage(canvas, 0, 0, scaledWidth, scaledHeight, 0, 0, width, height);
-      
+
         // Here are what the above parameters mean:
         // canvasElement, canvasXOffsetForImage, canvasYOffsetForImage, imageWidth, imageHeight, imageXOffset, imageYOffset, destinationImageWidth, destinationImageHeight
-      
+
         // Append canvas to body.
         pre.appendChild(canvas);
-        
+
     };
-    
-}   
+
+}
 
 // Function for getting pixels:
 function getPixels(imgData) {
     // get colors rgba (4 pix sequentially)
-    
+
     var count=1;
     //var msg = '';
     var rValues = [];
@@ -235,9 +235,9 @@ function getPixels(imgData) {
 
         warmColours += normalize((imgData.data[i] - imgData.data[i+2]) / 255) + " ";
         whiteness += ((((imgData.data[i]) + (imgData.data[i+1]) + (imgData.data[i+2])) /765) * 0.9) + " ";
-    
-        count++;  
-    }   
+
+        count++;
+    }
 // Arrays for lightness
 whiteness = whiteness.split(" ");
 whiteness.pop();
@@ -286,7 +286,7 @@ let warmColours16 = sliceAndMultiply(15, warmColours);
 brightness = brightness.split(" ");
 brightness.pop();
 
-// Function that converts midi value to frequency:    
+// Function that converts midi value to frequency:
 function arrayToFreq(array) {
     let a = 440; //frequency of A (coomon value is 440Hz)
     var newArray = [];
@@ -297,8 +297,8 @@ function arrayToFreq(array) {
             newArray.push((a / 32) * (2 ** ((array[i] - 9) / 12)));
         else
             newArray.push(0);
-    }   
-    return newArray; 
+    }
+    return newArray;
 }
 
 // array that slices the 16x16 array up in 16 different separate arrays
@@ -378,14 +378,14 @@ Arraybrightness13 = arrayToFreq(Arraybrightness13);
 Arraybrightness14 = arrayToFreq(Arraybrightness14);
 Arraybrightness15 = arrayToFreq(Arraybrightness15);
 Arraybrightness16 = arrayToFreq(Arraybrightness16);
-    
+
 
 // Functions for the 16 different sequences:
 
 const seq = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness1.length);
 
     gainNode1.gain.rampTo(brightness1[i], 0.2);
@@ -396,25 +396,25 @@ const seq = new Tone.Sequence((time, note) => {
 }, Arraybrightness1).start(0);
 
 const seq2 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness2.length);
-    
+
     gainNode2.gain.rampTo(brightness2[i], 0.2);
     synth2.harmonicity.value = warmColours2[i];
     synth2.triggerAttackRelease(note, whiteness3[i], time);
-    
+
 
     // subdivisions are given as subarrays
 }, Arraybrightness2).start(0);
 
 const seq3 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness3.length);
-    
+
     gainNode3.gain.rampTo(brightness3[i], 0.2);
     autoFilter3.wet.value = warmColours3[i];
     synth3.harmonicity.value = warmColours3[i];
@@ -424,11 +424,11 @@ const seq3 = new Tone.Sequence((time, note) => {
 }, Arraybrightness3).start(0);
 
 const seq4 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness4.length);
-    
+
     gainNode4.gain.rampTo(brightness4[i], 0.2);
     autoFilter4.wet.value = warmColours4[i];
     synth4.triggerAttackRelease(note, whiteness5[i], time);
@@ -437,11 +437,11 @@ const seq4 = new Tone.Sequence((time, note) => {
 }, Arraybrightness4).start(0);
 
 const seq5 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness5.length);
-    
+
     gainNode5.gain.rampTo(brightness5[i], 0.2);
     autoFilter5.wet.value = warmColours5[i];
     synth5.triggerAttackRelease(note, whiteness6[i], time);
@@ -451,11 +451,11 @@ const seq5 = new Tone.Sequence((time, note) => {
 }, Arraybrightness5).start(0);
 
 const seq6 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness6.length);
-    
+
     gainNode6.gain.rampTo(brightness6[i], 0.2);
     autoFilter5.wet.value = warmColours6[i];
     synth6.triggerAttackRelease(note, whiteness7[i], time);
@@ -464,11 +464,11 @@ const seq6 = new Tone.Sequence((time, note) => {
 }, Arraybrightness6).start(0);
 
 const seq7 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness7.length);
-    
+
     gainNode7.gain.rampTo(brightness7[i], 0.2);
     feedbackDelay7.wet.value = warmColours7[i];
     synth7.triggerAttackRelease(note, whiteness8[i], time);
@@ -477,11 +477,11 @@ const seq7 = new Tone.Sequence((time, note) => {
 }, Arraybrightness7).start(0);
 
 const seq8 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness8.length);
-    
+
     gainNode8.gain.rampTo(brightness8[i], 0.2);
     feedbackDelay8.wet.value = warmColours8[i];
     synth8.triggerAttackRelease(note, whiteness9[i], time);
@@ -490,11 +490,11 @@ const seq8 = new Tone.Sequence((time, note) => {
 }, Arraybrightness8).start(0);
 
 const seq9 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness9.length);
-    
+
     gainNode9.gain.rampTo(brightness9[i], 0.2);
     feedbackDelay9.wet.value = warmColours9[i];
     synth9.triggerAttackRelease(note, whiteness10[i], time);
@@ -505,11 +505,11 @@ const seq9 = new Tone.Sequence((time, note) => {
 }, Arraybrightness9).start(0);
 
 const seq10 = new Tone.Sequence((time, note) => {
-    
+
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness10.length);
-    
+
     gainNode10.gain.rampTo(brightness10[i], 0.2);
     feedbackDelay10.wet.value = warmColours10[i];
     synth10.triggerAttackRelease(note, whiteness11[i], time);
@@ -522,9 +522,9 @@ const seq10 = new Tone.Sequence((time, note) => {
 const seq11 = new Tone.Sequence((time, note) => {
 
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness11.length);
-    
+
     gainNode11.gain.rampTo(brightness11[i], 0.2);
 
     synth11.triggerAttackRelease(note, whiteness12[i], time);
@@ -534,9 +534,9 @@ const seq11 = new Tone.Sequence((time, note) => {
 
 const seq12 = new Tone.Sequence((time, note) => {
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness12.length);
-    
+
     gainNode12.gain.rampTo(brightness12[i], 0.2);
 
     synth11.triggerAttackRelease(note, whiteness13[i], time);
@@ -546,9 +546,9 @@ const seq12 = new Tone.Sequence((time, note) => {
 
 const seq13 = new Tone.Sequence((time, note) => {
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness13.length);
-    
+
     gainNode13.gain.rampTo(brightness13[i], 0.2);
 
     synth11.triggerAttackRelease(note, whiteness14[i], time);
@@ -558,9 +558,9 @@ const seq13 = new Tone.Sequence((time, note) => {
 
 const seq14 = new Tone.Sequence((time, note) => {
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness14.length);
-    
+
     gainNode14.gain.rampTo(brightness14[i], 0.2);
 
     synth11.triggerAttackRelease(note, whiteness15[i], time);
@@ -570,9 +570,9 @@ const seq14 = new Tone.Sequence((time, note) => {
 
 const seq15 = new Tone.Sequence((time, note) => {
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness15.length);
-    
+
     gainNode15.gain.rampTo(brightness15[i], 0.2);
 
     synth11.triggerAttackRelease(note, whiteness16[i], time);
@@ -582,20 +582,20 @@ const seq15 = new Tone.Sequence((time, note) => {
 
 const seq16 = new Tone.Sequence((time, note) => {
     var time2 = time * 4;
-    
+
     var i = Math.floor(time2 % brightness16.length);
-    
+
     gainNode16.gain.rampTo(brightness16[i], 0.2);
 
     synth11.triggerAttackRelease(note, whiteness1[i], time);
 
     // subdivisions are given as subarrays
 }, Arraybrightness16).start(0);
-    
+
 
 }
 
-            
+
 
 });
 });
@@ -610,4 +610,4 @@ function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
         };
     };
 
-let normalize = generateScaleFunction(-0.5, 1, 0, 1);   
+let normalize = generateScaleFunction(-0.5, 1, 0, 1);
