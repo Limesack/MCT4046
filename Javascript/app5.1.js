@@ -35,7 +35,7 @@ const keys = new Drum.Players({
 }).toDestination();
 
 document.querySelector("tone-play-toggle").addEventListener("start", () => Drum.Transport.start());
-document.querySelector("tone-play-toggle").addEventListener("stop", () => Drum.Transport.stop());
+//document.querySelector("tone-play-toggle").addEventListener("stop", () => Drum.Transport.stop());
 document.querySelector("tone-slider").addEventListener("input", (e) => Drum.Transport.bpm.value = parseFloat(e.target.value));
 document.querySelector("tone-step-sequencer").addEventListener("trigger", ({ detail }) => {
     keys.player(detail.row).start(detail.time, 0, "4t");
