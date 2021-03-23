@@ -38,7 +38,7 @@ document.querySelector("tone-play-toggle").addEventListener("start", () => Tone.
 document.querySelector("tone-play-toggle").addEventListener("stop", () => Tone.Transport.stop());
 document.querySelector("tone-slider").addEventListener("input", (e) => Tone.Transport.bpm.value = parseFloat(e.target.value));
 document.querySelector("tone-step-sequencer").addEventListener("trigger", ({ detail }) => {
-    keys.player(detail.row).start(detail.time, 0, "16t");
+    keys.player(detail.row).start(detail.time, 0.7, "16t");
 });
 
 ////////
