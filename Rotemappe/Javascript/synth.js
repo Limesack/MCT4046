@@ -22,4 +22,4 @@ const synth = new Tone.MonoSynth({
     release: 2,
     sustain: 0.5,
   }
-}).toDestination();
+}).connect(autoFilter1);
