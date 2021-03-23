@@ -89,6 +89,32 @@ const feedbackDelay10 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode10);
 
 // synth1 - 6 autoFilter, synth 7-10 feedbackDelay, synth 11-16 autoFilter + automated sustain
 //const synth = new Tone.AMSynth().connect(autoFilter1);
+const synth = new Tone.MonoSynth({
+	oscillator: {
+		type: "sawtooth",
+	},
+	envelope: {
+    attack: 0.005,
+    decay: 0.1,
+    release: 1,
+    sustain: 0.9,
+	},
+	filter: {
+    Q: 1,
+    rolloff: -12,
+    type: "lowpass",
+	},
+  filterEnvelope: {
+    attack: 0.6,
+    baseFrequency: 200,
+    decay: 0.2,
+    exponent: 2,
+    octaves: 3,
+    release: 2,
+    sustain: 0.5,
+  }
+}).connect(autoFilter1);
+
 
 const synth2 = new Tone.FMSynth().connect(autoFilter2);
 const synth3 = new Tone.AMSynth().connect(autoFilter3);
