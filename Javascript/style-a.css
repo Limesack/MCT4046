@@ -1,15 +1,13 @@
 body {
   margin: 20px;
-  font-family: 'Courier New';
+  font-family: 'Courier New', monospace;
   font-size: 25px;
   letter-spacing: 2px;
   word-spacing: 2px;
   color: #ccde07;
   font-weight: 700;
-  text-decoration: none;
-  font-style: normal;
   text-align: center;
-  background-color: #28011cdd;
+  background-color: #00FF33;
   font-size: 100%;
 
   }
@@ -22,7 +20,7 @@ body {
 
 #button  {
   background-color: #5b0058;
-  font-family: 'Courier New';
+  font-family: 'Courier New', monospace;
   border-radius: 17px;
   color: #ccde07;
   padding: 10px 20px;
@@ -39,7 +37,7 @@ body {
 
 .AMbuttons  {
   background-color: #0000004d;
-  font-family: 'Courier New';
+  font-family: 'Courier New', monospace;
   border-radius: 17px;
   color: #ccde07;
   padding: 10px 20px;
@@ -219,7 +217,5 @@ background-color: #ccde0758;
     width: 18px;
     height: 18px;
     background-color: #28011cdd;
-    border: 1px;
-    border-color: #FFFFFF
-    border-radius: 9px;
+    border-radius: 10px;
 }
