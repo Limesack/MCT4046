@@ -14,7 +14,7 @@ function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
 let normalize = generateScaleFunction(-0.5, 1, 0, 1);
 // Sequencer code:
 
-const keys = new Tone.Players({
+const keys = new Drum.Players({
     urls: {
         0: "BD.wav",
         1: "SD.wav",
@@ -34,11 +34,11 @@ const keys = new Tone.Players({
   //  file:"//Medusa"
 }).toDestination();
 
-document.querySelector("tone-play-toggle").addEventListener("start", () => Tone.Transport.start());
-document.querySelector("tone-play-toggle").addEventListener("stop", () => Tone.Transport.stop());
-document.querySelector("tone-slider").addEventListener("input", (e) => Tone.Transport.bpm.value = parseFloat(e.target.value));
+document.querySelector("tone-play-toggle").addEventListener("start", () => Drum.Transport.start());
+document.querySelector("tone-play-toggle").addEventListener("stop", () => Drum.Transport.stop());
+document.querySelector("tone-slider").addEventListener("input", (e) => Drum.Transport.bpm.value = parseFloat(e.target.value));
 document.querySelector("tone-step-sequencer").addEventListener("trigger", ({ detail }) => {
-    keys.player(detail.row).start(detail.time, 0, "16t");
+    keys.player(detail.row).start(detail.time, 0, "4t");
 });
 
 ////////
