@@ -396,11 +396,10 @@ const seq = new Tone.Sequence((time, note) => {
     autoFilter1.wet.value = warmColours1[i];
 
 }, Arraybrightness1).start(0);
-
+/*
 const seq2 = new Tone.Sequence((time, note) => {
     synth2.triggerAttackRelease(note, sustain, time);
     var time2 = time * 4;
-
     var i = Math.floor(time2 % brightness2.length);
 
     gainNode2.gain.rampTo(brightness2[i], 0.2);
@@ -587,6 +586,7 @@ const seq16 = new Tone.Sequence((time, note) => {
 
     // subdivisions are given as subarrays
 }, Arraybrightness16).start(0);
+*/
 
 
 }
