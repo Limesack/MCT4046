@@ -7,10 +7,23 @@
     <title>Tittel</title>
 </head>
 <body>
-    <script src="https://unpkg.com/tone"></script>
-    <button id="play-button">Play/Pause</button>
+    <script src="https://tonejs.github.io/build/Tone.js"></script>
+    <button id ="button">Play</button>
+    <p>press Play button to hear a note</p>
+    <script src="synth.js"></script>
 
-    <script src="test.js"></script>
+    <script>
+    document.getElementById("button").addEventListener("click", function(){
+    synth.triggerAttackRelease("C4", "8n")
+
+  });
+    </script>
+    <!--
+    //-->
+
+    </script>
+
+
 
 </body>
 </html>
