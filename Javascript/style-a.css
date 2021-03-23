@@ -213,7 +213,7 @@ background-color: #ccde0758;
     z-index: 200;
     width:1000px;
     height:20px;
-    border-radius: 1px;
+    border-radius: 0px;
     background-color: rgb(255, 255, 255) ;
 
 
@@ -222,8 +222,8 @@ background-color: #ccde0758;
 .range::-webkit-slider-thumb
 {
     -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     background-color: #28011cdd;
-    border-radius: 1px;
+    border-radius: 0px;
 }
