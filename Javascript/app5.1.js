@@ -29,7 +29,7 @@ const keys = new Drum.Players({
 //    },
   //  fadeOut: "64n",
   //  baseUrl: "https://tonejs.github.io/audio/casio/"
-      baseUrl: "https://limesack.github.io/MCT4046/Javascript/Medusa/"
+      baseUrl: "https://limesack.github.io/MCT4046/Javascript/Moog/"
 //    baseUrl: "/Medusa/"
   //  file:"//Medusa"
 }).toDestination();
