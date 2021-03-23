@@ -16,10 +16,10 @@ let normalize = generateScaleFunction(-0.5, 1, 0, 1);
 
 const keys = new Tone.Players({
     urls: {
-        0: "/Medusa/OH_Medusa.wav",
-        1: "/Medusa/HH_Medusa.wav",
-        2: "/Medusa/SD_Medusa.wav",
-        3: "/Medusa/BD_Medusa.wav",
+        0: "OH_Medusa.wav",
+        1: "HH_Medusa.wav",
+        2: "SD_Medusa.wav",
+        3: "BD_Medusa.wav",
     },
 //    urls: {
 //        0: "A1.mp3",
@@ -29,6 +29,7 @@ const keys = new Tone.Players({
 //    },
     fadeOut: "64n",
   //  baseUrl: "https://tonejs.github.io/audio/casio/"
+      baseUrl: "https://limesack.github.io/MCT4046/Javascript/Medusa/"
 //    baseUrl: "/Medusa/"
   //  file:"//Medusa"
 }).toDestination();
