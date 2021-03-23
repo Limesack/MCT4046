@@ -116,7 +116,7 @@ const synth = new Tone.DuoSynth({
   },
   harmonicity: {
     cents: 0
-  },
+  }
 });
 duoSynth.harmonicity.value = 1;
 
