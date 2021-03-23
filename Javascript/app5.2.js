@@ -89,6 +89,7 @@ const feedbackDelay10 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode10);
 
 // synth1 - 6 autoFilter, synth 7-10 feedbackDelay, synth 11-16 autoFilter + automated sustain
 //const synth = new Tone.AMSynth().connect(autoFilter1);
+const chorus = new Tone.Chorus(4, 2.5, 0.5).connect(autoFilter1).start();
 const synth = new Tone.MonoSynth({
 	oscillator: {
 		type: "sawtooth",
@@ -115,7 +116,7 @@ const synth = new Tone.MonoSynth({
   }
 }).connect(chorus);
 
-const chorus = new Tone.Chorus(4, 2.5, 0.5).connect(autoFilter1).start();
+
 
 
 
