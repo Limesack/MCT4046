@@ -88,7 +88,7 @@ const feedbackDelay9 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode9);
 const feedbackDelay10 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode10);
 
 // synth1 - 6 autoFilter, synth 7-10 feedbackDelay, synth 11-16 autoFilter + automated sustain
-const synth = new Tone.AMSynth().connect(autoFilter1);
+//const synth = new Tone.AMSynth().connect(autoFilter1);
 const synth2 = new Tone.FMSynth().connect(autoFilter2);
 const synth3 = new Tone.AMSynth().connect(autoFilter3);
 const synth4 = new Tone.FMSynth().connect(autoFilter4);
