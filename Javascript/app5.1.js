@@ -27,7 +27,7 @@ const keys = new Tone.Players({
 //        2: "E2.mp3",
 //        3: "Fs2.mp3",
 //    },
-    fadeOut: "64n",
+  //  fadeOut: "64n",
   //  baseUrl: "https://tonejs.github.io/audio/casio/"
       baseUrl: "https://limesack.github.io/MCT4046/Javascript/Moog/"
 //    baseUrl: "/Medusa/"
@@ -38,7 +38,7 @@ document.querySelector("tone-play-toggle").addEventListener("start", () => Tone.
 document.querySelector("tone-play-toggle").addEventListener("stop", () => Tone.Transport.stop());
 document.querySelector("tone-slider").addEventListener("input", (e) => Tone.Transport.bpm.value = parseFloat(e.target.value));
 document.querySelector("tone-step-sequencer").addEventListener("trigger", ({ detail }) => {
-    keys.player(detail.row).start(detail.time, 0.7, "16t");
+    keys.player(detail.row).start(detail.time, 0, "16t");
 });
 
 ////////
