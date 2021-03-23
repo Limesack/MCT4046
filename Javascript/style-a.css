@@ -228,13 +228,6 @@ background-color: #ccde0758;
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
-    background-color: #555;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4DDBFF), to(#00CCFF));
-    background-image: -webkit-linear-gradient(right, #c8ff00,rgb(68, 7, 38));
-    background-image: -moz-linear-gradient(right, #c8ff00,rgb(68, 7, 38));
-    background-image: -ms-linear-gradient(right, #c8ff00,rgb(68, 7, 38));
-    background-image: -o-linear-gradient(right, #c8ff00,rgb(68, 7, 38));
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+    background-color: #F0F0F0;
+    
 }
