@@ -213,13 +213,9 @@ background-color: #ccde0758;
     z-index: 200;
     width:1000px;
     height:20px;
-    border-radius: 10px;
-    background-color: rgb(68, 7, 38) ;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4DDBFF), to(#00CCFF));
-    background-image: -webkit-linear-gradient(right,rgb(68, 7, 38), #ffffff);
-    background-image: -moz-linear-gradient(right,rgb(68, 7, 38), #ffffff);
-    background-image: -ms-linear-gradient(right,rgb(68, 7, 38), #ffffff);
-    background-image: -o-linear-gradient(right,rgb(68, 7, 38), #ffffff);
+    border-radius: 1px;
+    background-color: rgb(255, 255, 255) ;
+
 
 }
 
@@ -229,5 +225,5 @@ background-color: #ccde0758;
     width: 20px;
     height: 20px;
     background-color: #28011cdd;
-    border-radius: 10px;
+    border-radius: 1px;
 }
