@@ -217,9 +217,9 @@ const synth3 = new Tone.FMSynth({
 
 
 // SENDS SYNTH CHAIN TO OUPUT
-//synth.chain(chorus, autoFilter1);
+synth.chain(chorus, gainNode1);
 //synth2.chain(gainNode2);
-synth3.chain(gainNode3);
+//synth3.chain(gainNode3);
 
 
 
