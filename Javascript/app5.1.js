@@ -154,7 +154,7 @@ const synth = new Tone.DuoSynth({
 		type: "sawtooth",
 	},
 	envelope: {
-    attack: 0.005,
+    attack: 0.405,
     decay: 0.1,
     release: 1,
   //  sustain: 0.9,
