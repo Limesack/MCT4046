@@ -94,7 +94,7 @@ const feedbackDelay10 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode10);
 // EFFECTS
 // REVERB
 const reverb = new Tone.Reverb({
-  decay: 1,
+  decay: 4,
   preDelay:0.02,
   wet: 0.5,
 });
