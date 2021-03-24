@@ -145,7 +145,46 @@ const synth16 = new Tone.Sampler({
 
 
 
-const synth = new Tone.FMSynth().connect(autoFilter1);
+//const synth = new Tone.FMSynth().connect(autoFilter1);
+
+
+const chorus = new Tone.Chorus(4, 2.5, 0.5).start();
+const synth = new Tone.DuoSynth({
+	oscillator: {
+		type: "sawtooth",
+	},
+	envelope: {
+    attack: 0.005,
+    decay: 0.1,
+    release: 1,
+  //  sustain: 0.9,
+	},
+	filter: {
+    Q: 1,
+    rolloff: -12,
+    type: "lowpass",
+	},
+  filterEnvelope: {
+    attack: 0.005,
+    baseFrequency: 200,
+    decay: 0.1,
+    exponent: 2,
+    octaves: 3,
+    release: 2,
+    sustain: 1,
+  },/*
+  Detune: {
+    cents: 10
+  },*/
+});
+
+duoSynth.harmonicity.value = 2;
+
+// SENDS SYNTH CHAIN TO OUPUT
+synth.chain(chorus, autoFilter1);
+
+
+
 const synth3 = new Tone.FMSynth().connect(autoFilter2);
 const synth5 = new Tone.FMSynth().connect(autoFilter3);
 const synth7 = new Tone.FMSynth().connect(autoFilter4);

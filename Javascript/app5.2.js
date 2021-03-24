@@ -124,7 +124,7 @@ duoSynth.harmonicity.value = 2;
 // SENDS SYNTH CHAIN TO OUPUT
 synth.chain(chorus, autoFilter1);
 
-/*
+
 const synth2 = new Tone.FMSynth().connect(autoFilter2);
 const synth3 = new Tone.AMSynth().connect(autoFilter3);
 const synth4 = new Tone.FMSynth().connect(autoFilter4);
@@ -140,7 +140,7 @@ const synth13 = new Tone.AMSynth().connect(autoFilter13);
 const synth14 = new Tone.FMSynth().connect(autoFilter14);
 const synth15 = new Tone.AMSynth().connect(autoFilter15);
 const synth16 = new Tone.FMSynth().connect(autoFilter16);
-*/
+
 // 16 brightness arrays
 let brightness = [];
 let brightness2 = [];
