@@ -150,7 +150,7 @@ const synth = new Tone.DuoSynth({
 	},
   filterEnvelope: {
     attack: 0.05,
-    baseFrequency: 100,
+    baseFrequency: 70,
     decay: 0.1,
     exponent: 2,
     octaves: 3,
