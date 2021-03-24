@@ -3,22 +3,15 @@
 
 // Sequencer code borrowed from Tone.js examples https://tonejs.github.io/examples/stepSequencer:
 const keys = new Tone.Players({
-    urls: {
-        0: "./Moog/BD.wav",
-        1: "./Moog/SDRoom.wav",
-        2: "./Moog/HH.wav",
-        3: "./Moog/OH.wav",
-    },
-//    urls: {
-//        0: "A1.mp3",
-//        1: "Cs2.mp3",
-//        2: "E2.mp3",
-//        3: "Fs2.mp3",
-//    },
-    fadeOut: "64n",
-  //  baseUrl: "https://tonejs.github.io/audio/casio/"
-//    baseUrl: "/Medusa/"
-  //  file:"//Medusa"
+  urls: {
+      0: "BD.wav",
+      1: "SDRoom.wav",
+      2: "HH.wav",
+      3: "OH.wav",
+  },
+
+    baseUrl: "https://limesack.github.io/MCT4046/Javascript/Medoog/"
+    
 }).toDestination();
 
 document.querySelector("tone-play-toggle").addEventListener("start", () => Tone.Transport.start());
