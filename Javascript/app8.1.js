@@ -27,7 +27,7 @@ const keys = new Tone.Players({
   
   //Gain:
   let gainNode = new Tone.Gain().toMaster();
-  gainNode.gain.value = 0.5;
+  gainNode.gain.value = 0.2;
   
   // individual gainNodes
   let gainNode1 = new Tone.Gain().connect(gainNode);

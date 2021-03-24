@@ -1,13 +1,13 @@
 var scaledHeight = 1;
 var scaledWidth = 16;
 var sensiScale = 0.2;
-var sustain = 0.1;
+//var sustain = 0.1;
 
 
 let heightslider = document.getElementById("scaledHeight");
 let witdthslider = document.getElementById("scaledWidth");
 let sensitivity = document.getElementById("sensitivity");
-let sustainSlider = document.getElementById("sustain");
+//let sustainSlider = document.getElementById("sustain");
 let volumeSlider = document.getElementById("volume");
 
 const allRanges = document.querySelectorAll(".range-wrap");
@@ -47,13 +47,12 @@ sensitivity.oninput = function() {
 
   }
 
-sustainSlider.oninput = function() {
+/* sustainSlider.oninput = function() {
   sustain = this.value;
 
-  }
+  } */
 
 volumeSlider.oninput = function() {
   gainNode.gain.value = this.value;
 
   }
-
