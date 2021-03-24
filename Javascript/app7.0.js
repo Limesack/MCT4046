@@ -94,9 +94,9 @@ const feedbackDelay10 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode10);
 // EFFECTS
 // REVERB
 const reverb = new Tone.Reverb({
-  decay: 4,
-  preDelay:0.02,
-  wet: 0.5,
+  decay: 2.6,
+  preDelay:0.01,
+  wet: 0.25,
 });
 
 
@@ -198,7 +198,7 @@ const synth3 = new Tone.FMSynth({
 
 // ################################################################# ROUTING SUGGESTIONS
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(chorus, reverb, gainNode1);
+synth.chain(chorus, ppdelay, reverb, gainNode1);
 //synth2.chain(gainNode2);
 //synth3.chain(gainNode3);
 
