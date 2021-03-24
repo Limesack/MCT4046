@@ -157,8 +157,8 @@ const synth = new Tone.DuoSynth({
     release: 2,
     sustain: 1,
   },
-  harmonicity: 1, // 2 = 1 oscilator en oktav over den andre, 1 = unison
-  Detune: 5,
+  harmonicity: 2, // 2 = 1 oscilator en oktav over den andre, 1 = unison
+  Detune: 3,
   vibratoAmount: 0,
   vibratoRate: 0,
   portamento: 0,
@@ -198,7 +198,7 @@ const synth3 = new Tone.FMSynth({
 
 // ################################################################# ROUTING SUGGESTIONS
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(reverb, gainNode1);
+synth.chain(chorus, reverb, gainNode1);
 //synth2.chain(gainNode2);
 //synth3.chain(gainNode3);
 
