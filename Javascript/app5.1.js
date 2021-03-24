@@ -239,12 +239,12 @@ const synth3 = new Tone.FMSynth({
     sustain: 0.3,
   },
   oscillator: "sine",
-  portamento : 0,
+  portamento: 0,
 });
 
 
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(chorus, gainNode1);
+synth.chain(gainNode1);
 //synth2.chain(gainNode2);
 //synth3.chain(gainNode3);
 
