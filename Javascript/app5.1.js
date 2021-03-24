@@ -141,14 +141,13 @@ const synth16 = new Tone.Sampler({
 
 }).connect(autoFilter); */
 
-//synths:
 
 // EFFECTS
 // REVERB
 const reverb = new Tone.Reverb({
   decay: 1,
   preDelay:0.02,
-  wet: 50,
+  wet: 0.5,
 }).start();
 
 // CHORUS
@@ -159,7 +158,7 @@ const chorus = new Tone.Chorus({
   feedback: 0,
   spread: 0,
   type: "triangle",
-  wet: 50,
+  wet: 0.5,
 }).start();
 
 
@@ -169,7 +168,7 @@ const phaser = new Tone.Phaser({
 	octaves: 5,
 	baseFrequency: 1000,
   //Q: 1,
-  wet: 50,
+  wet: 0.5,
 }).start();
 
 
@@ -177,12 +176,11 @@ const phaser = new Tone.Phaser({
 const ppdelay = new Tone.PingPongDelay({
   delayTime: 100,
   Feedback: 33,
-  wet: 50,
+  wet: 0.5,
 }).start();
 
 
-
-
+// SYNTHS
 // SYNTH 1
 const synth = new Tone.DuoSynth({
 	oscillator: {
