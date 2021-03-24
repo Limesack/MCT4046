@@ -197,7 +197,7 @@ const synth3 = new Tone.FMSynth({
 
 // ################################################################# ROUTING SUGGESTIONS
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(gainNode1);
+synth.chain(chorus, reverb, gainNode1);
 //synth2.chain(gainNode2);
 //synth3.chain(gainNode3);
 
