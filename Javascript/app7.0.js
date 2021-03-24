@@ -103,12 +103,12 @@ const reverb = new Tone.Reverb({
 // CHORUS
 const chorus = new Tone.Chorus({
   delayTime: 4,
-  depth: 2.5,
+  depth: 3,
   frequency: 0.5,
   feedback: 0,
   spread: 0,
   type: "triangle",
-  wet: 0.5,
+  wet: 0.25,
 }).start();
 
 
