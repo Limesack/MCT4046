@@ -124,8 +124,8 @@ const phaser = new Tone.Phaser({
 
 // PING PONG DELAY
 const ppdelay = new Tone.PingPongDelay({
-  delayTime: 2,
-  Feedback: 0.5,
+  delayTime: 0.100,
+  Feedback: 0.3,
   wet: 0.5,
 });
 
