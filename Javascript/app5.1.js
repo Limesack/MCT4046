@@ -177,11 +177,11 @@ const synth = new Tone.DuoSynth({
     cents: 10,
   },*/
 });
-
+// 2 = 1 oscilator en oktav over den andre, 1 = unison
 DuoSynth.harmonicity.value = 2;
 
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(chorus, autoFilter1);
+synth.chain(chorus, gainNode1);
 
 
 
