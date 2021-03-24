@@ -148,7 +148,7 @@ const reverb = new Tone.Reverb({
   decay: 1,
   preDelay:0.02,
   wet: 0.5,
-}).start();
+});
 
 // CHORUS
 const chorus = new Tone.Chorus({
