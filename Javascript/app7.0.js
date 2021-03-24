@@ -135,7 +135,7 @@ const ppdelay = new Tone.PingPongDelay({
 // SYNTH 1
 const synth = new Tone.DuoSynth({
 	oscillator: {
-		type: "sawtooth",
+		type: "square",
 	},
 	envelope: {
     attack: 0.005,
@@ -164,7 +164,7 @@ const synth = new Tone.DuoSynth({
 //  portamento: 0,
 });
 
-
+/*
 // SYNTH 2
 // INGEN LYD, TRENGER TRIGGERATTACK; IKKE triggerAttackRelease
 const synth2 = new Tone.PluckSynth({
@@ -195,19 +195,17 @@ const synth3 = new Tone.FMSynth({
   oscillator: "sine",
   portamento: 0,
 });
-
+*/
 // ################################################################# ROUTING SUGGESTIONS
 // SENDS SYNTH CHAIN TO OUPUT
 //synth.chain(chorus, ppdelay, reverb, gainNode1);
 synth.chain(gainNode1);
-//synth2.chain(gainNode2);
-//synth3.chain(gainNode3);
 
 
 // synth1 - 6 autoFilter, synth 7-10 feedbackDelay, synth 11-16 autoFilter + automated sustain
 //const synth = new Tone.AMSynth().connect(autoFilter1);
-//const synth2 = new Tone.FMSynth().connect(autoFilter2);
-//const synth3 = new Tone.AMSynth().connect(autoFilter3);
+const synth2 = new Tone.FMSynth().connect(autoFilter2);
+const synth3 = new Tone.AMSynth().connect(autoFilter3);
 const synth4 = new Tone.FMSynth().connect(autoFilter4);
 const synth5 = new Tone.AMSynth().connect(autoFilter5);
 const synth6 = new Tone.FMSynth().connect(autoFilter6);

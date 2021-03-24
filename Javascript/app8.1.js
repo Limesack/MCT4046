@@ -560,7 +560,9 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness1.length);
   
       gainNode1.gain.rampTo(brightness1[i], 0.2);
-      synth.harmonicity.value = warmColours1[i];
+      // Harmonicity determined by warmness of prior pixel
+      synth.harmonicity.value = warmColours1[i-1];
+
       autoFilter1.wet.value = coldColours1[i+1];
       synth.triggerAttackRelease(note, whiteness2[i], time);
   
@@ -574,7 +576,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness2.length);
   
       gainNode2.gain.rampTo(brightness2[i], 0.2);
-      synth2.harmonicity.value = warmColours2[i];
+
       autoFilter2.wet.value = coldColours2[i+1];
       synth2.triggerAttackRelease(note, whiteness3[i], time);
   
@@ -589,8 +591,8 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness3.length);
   
       gainNode3.gain.rampTo(brightness3[i], 0.2);
-      autoFilter3.wet.value = coldColours1[i+1];
-      synth3.harmonicity.value = warmColours3[i];
+      autoFilter3.wet.value = coldColours3[i+1];
+
       synth3.triggerAttackRelease(note, whiteness4[i], time);
   
       // subdivisions are given as subarrays
@@ -603,7 +605,8 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness4.length);
   
       gainNode4.gain.rampTo(brightness4[i], 0.2);
-      autoFilter4.wet.value = warmColours4[i];
+      autoFilter4.wet.value = coldColours4[i+1];
+
       synth4.triggerAttackRelease(note, whiteness5[i], time);
   
       // subdivisions are given as subarrays
@@ -616,7 +619,10 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness5.length);
   
       gainNode5.gain.rampTo(brightness5[i], 0.2);
-      autoFilter5.wet.value = warmColours5[i];
+      feedbackDelay5.wet.value = coldColours5[i+1];
+      synth5.modulation.value = warmColours5[i-1];
+
+
       synth5.triggerAttackRelease(note, whiteness6[i], time);
   
   
@@ -630,7 +636,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness6.length);
   
       gainNode6.gain.rampTo(brightness6[i], 0.2);
-      autoFilter5.wet.value = warmColours6[i];
+      feedbackDelay6.wet.value = coldColours6[i+1];
       synth6.triggerAttackRelease(note, whiteness7[i], time);
   
       // subdivisions are given as subarrays
@@ -643,7 +649,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness7.length);
   
       gainNode7.gain.rampTo(brightness7[i], 0.2);
-      feedbackDelay7.wet.value = warmColours7[i];
+      feedbackDelay7.wet.value = coldColours7[i+1];
       synth7.triggerAttackRelease(note, whiteness8[i], time);
   
       // subdivisions are given as subarrays
@@ -656,7 +662,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness8.length);
   
       gainNode8.gain.rampTo(brightness8[i], 0.2);
-      feedbackDelay8.wet.value = warmColours8[i];
+      feedbackDelay8.wet.value= coldColours8[i+1];
       synth8.triggerAttackRelease(note, whiteness9[i], time);
   
       // subdivisions are given as subarrays
@@ -669,10 +675,11 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness9.length);
   
       gainNode9.gain.rampTo(brightness9[i], 0.2);
-      feedbackDelay9.wet.value = warmColours9[i];
+      reverb9.preDelay.value = coldColours9[i+1];
+      synth9.harmonicity.value = warmColours9[i-1];
+
       synth9.triggerAttackRelease(note, whiteness10[i], time);
   
-      //synth9.triggerAttackRelease(note, brightness9[i], time);
   
       // subdivisions are given as subarrays
   }, Arraybrightness9).start(0);
@@ -684,7 +691,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness10.length);
   
       gainNode10.gain.rampTo(brightness10[i], 0.2);
-      feedbackDelay10.wet.value = warmColours10[i];
+      reverb10.preDelay.value = coldColours10[i+1];
       synth10.triggerAttackRelease(note, whiteness11[i], time);
   
   
@@ -699,7 +706,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness11.length);
   
       gainNode11.gain.rampTo(brightness11[i], 0.2);
-  
+      reverb11.preDelay.value = coldColours11[i+1];
       synth11.triggerAttackRelease(note, whiteness12[i], time);
   
       // subdivisions are given as subarrays
@@ -711,7 +718,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness12.length);
   
       gainNode12.gain.rampTo(brightness12[i], 0.2);
-  
+      reverb12.preDelay.value = coldColours12[i+1];
       synth11.triggerAttackRelease(note, whiteness13[i], time);
   
       // subdivisions are given as subarrays
@@ -723,6 +730,8 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness13.length);
   
       gainNode13.gain.rampTo(brightness13[i], 0.2);
+      phaser13.wet.value = coldColours13[i+1];
+      synth13.modulation.value = warmColours13[i-1];
   
       synth11.triggerAttackRelease(note, whiteness14[i], time);
   
@@ -735,7 +744,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness14.length);
   
       gainNode14.gain.rampTo(brightness14[i], 0.2);
-  
+      phaser14.wet.value = coldColours14[i+1];
       synth11.triggerAttackRelease(note, whiteness15[i], time);
   
       // subdivisions are given as subarrays
@@ -747,7 +756,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness15.length);
   
       gainNode15.gain.rampTo(brightness15[i], 0.2);
-  
+      phaser15.wet.value = coldColours15[i+1];
       synth11.triggerAttackRelease(note, whiteness16[i], time);
   
       // subdivisions are given as subarrays
@@ -759,7 +768,7 @@ coldColours = coldColours.split(" ");
       var i = Math.floor(time2 % brightness16.length);
   
       gainNode16.gain.rampTo(brightness16[i], 0.2);
-  
+      phaser16.wet.value = coldColours16[i+1];
       synth11.triggerAttackRelease(note, whiteness1[i], time);
   
       // subdivisions are given as subarrays
