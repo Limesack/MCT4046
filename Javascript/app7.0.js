@@ -154,7 +154,7 @@ const synth = new Tone.DuoSynth({
     decay: 0.1,
     exponent: 2,
     octaves: 3,
-    sustain: 0.5,
+    sustain: 0.1,
     release: 0.5,
   },
   harmonicity: 1, // 2 = 1 oscilator en oktav over den andre, 1 = unison
