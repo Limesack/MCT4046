@@ -199,9 +199,9 @@ const synth3 = new Tone.FMSynth({
 // ################################################################# ROUTING SUGGESTIONS
 // SENDS SYNTH CHAIN TO OUPUT
 //synth.chain(chorus, ppdelay, reverb, gainNode1);
-//synth.chain(gainNode1);
+synth.chain(gainNode1);
 //synth2.chain(gainNode2);
-synth3.chain(gainNode3);
+//synth3.chain(gainNode3);
 
 
 // synth1 - 6 autoFilter, synth 7-10 feedbackDelay, synth 11-16 autoFilter + automated sustain
