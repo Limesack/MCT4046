@@ -168,10 +168,10 @@ const synth = new Tone.DuoSynth({
 // SYNTH 2
 // INGEN LYD, TRENGER TRIGGERATTACK; IKKE triggerAttackRelease
 const synth2 = new Tone.PluckSynth({
-  attackNoise: 1,  // RANGE 0.1-20
+  attackNoise: 10,  // RANGE 0.1-20
   dampening: 3500, // LP FILTRE COMB FILTRE DAPM- 0-7000
-  release: 0.3,      // time to reach 0
-  resonance: 1,    // sustain duration
+  release: 1,      // time to reach 0
+  resonance: 0.8,    // sustain duration
 });
 
 
@@ -198,8 +198,9 @@ const synth3 = new Tone.FMSynth({
 
 // ################################################################# ROUTING SUGGESTIONS
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(chorus, ppdelay, reverb, gainNode1);
-//synth2.chain(gainNode2);
+//synth.chain(chorus, ppdelay, reverb, gainNode1);
+//synth.chain(gainNode1);
+synth2.chain(gainNode2);
 //synth3.chain(gainNode3);
 
 
@@ -395,7 +396,7 @@ brightness.pop();
 
 // Function that converts midi value to frequency:
 function arrayToFreq(array) {
-    let a = 440; //frequency of A (coomon value is 440Hz)
+    let a = 440; //frequency of A (common value is 440Hz)
     var newArray = [];
 
     for (var i = 0; i < array.length; i += 1) {
