@@ -181,7 +181,7 @@ const synth = new Tone.DuoSynth({
 // Synth.harmonicity.value = 2;
 
 
-
+// INGEN LYD, TRENGER TRIGGERATTACK; IKKE triggerAttackRelease
 // SYNTH 2
 const synth2 = new Tone.PluckSynth({
   attackNoise: 1,  // RANGE 0.1-20
@@ -210,8 +210,8 @@ const synth3 = new Tone.Synth({
 
 // SENDS SYNTH CHAIN TO OUPUT
 //synth.chain(chorus, autoFilter1);
-synth2.chain(autoFilter2);
-//synth3.chain(gainNode3);
+//synth2.chain(gainNode2);
+synth3.chain(gainNode3);
 
 
 
