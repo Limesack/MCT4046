@@ -140,9 +140,9 @@ let brightness16 = [];
     cv = document.querySelector("#cv");
     c = cv.getContext("2d");
 
-    pre1 = document.querySelector("pre1")
+/*     pre1 = document.querySelector("pre1")
     pre2 = document.querySelector("pre2")
-    pre3 = document.querySelector("pre3")
+    pre3 = document.querySelector("pre3") */
     pre = document.querySelector("pre")
 
     //img1 = new Image();

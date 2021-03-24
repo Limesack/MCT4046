@@ -1,5 +1,5 @@
 const chorus = new Tone.Chorus(4, 2.5, 0.5).connect(autoFilter1).start();
-
+ 
 // First
 const synth = new Tone.DuoSynth({
 	oscillator: {
