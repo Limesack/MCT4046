@@ -11,7 +11,7 @@ const keys = new Tone.Players({
   },
 
     baseUrl: "https://limesack.github.io/MCT4046/Javascript/Medoog/"
-    
+
 }).toDestination();
 
 document.querySelector("tone-play-toggle").addEventListener("start", () => Tone.Transport.start());
@@ -88,6 +88,119 @@ const feedbackDelay7 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode7);
 const feedbackDelay8 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode8);
 const feedbackDelay9 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode9);
 const feedbackDelay10 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode10);
+
+// ################################################################# EFFECTS
+
+// EFFECTS
+// REVERB
+const reverb = new Tone.Reverb({
+  decay: 1,
+  preDelay:0.02,
+  wet: 0.5,
+});
+
+
+// CHORUS
+const chorus = new Tone.Chorus({
+  delayTime: 4,
+  depth: 2.5,
+  frequency: 0.5,
+  feedback: 0,
+  spread: 0,
+  type: "triangle",
+  wet: 0.5,
+}).start();
+
+
+// PHASER
+const phaser = new Tone.Phaser({
+	frequency: 15,
+	octaves: 5,
+	baseFrequency: 1000,
+  //Q: 1,
+  wet: 0.5,
+});
+
+
+// PING PONG DELAY
+const ppdelay = new Tone.PingPongDelay({
+  delayTime: 100,
+  Feedback: 33,
+  wet: 0.5,
+});
+
+// ################################################################# INSTRUMENTS
+
+// SYNTHS
+// SYNTH 1
+const synth = new Tone.DuoSynth({
+	oscillator: {
+		type: "sawtooth",
+	},
+	envelope: {
+    attack: 0.05,
+    decay: 0.1,
+    release: 1,
+    sustain: 0.9,
+	},
+	filter: {
+    Q: 1,
+    rolloff: -12,
+    type: "lowpass",
+	},
+  filterEnvelope: {
+    attack: 0.005,
+    baseFrequency: 200,
+    decay: 0.1,
+    exponent: 2,
+    octaves: 3,
+    release: 2,
+    sustain: 1,
+  },
+  harmonicity: 2, // 2 = 1 oscilator en oktav over den andre, 1 = unison
+  Detune: 10,
+  vibratoAmount: 0,
+  vibratoRate: 0,
+});
+
+
+// SYNTH 2
+// INGEN LYD, TRENGER TRIGGERATTACK; IKKE triggerAttackRelease
+const synth2 = new Tone.PluckSynth({
+  attackNoise: 1,  // RANGE 0.1-20
+  dampening: 3500, // LP FILTRE COMB FILTRE DAPM- 0-7000
+  release: 0.3,      // time to reach 0
+  resonance: 1,    // sustain duration
+});
+
+
+// SYNTH 3
+const synth3 = new Tone.FMSynth({
+  detune: 10,
+  envelope: {
+    attack: 0.005,
+    decay: 0.1,
+    release: 1,
+    sustain: 0.3,
+  },
+  harmonicity: 1,
+  modulation: 1,
+  modulationEnvelope: {
+    attack: 0.005,
+    decay: 0.1,
+    release: 1,
+    sustain: 0.3,
+  },
+  oscillator: "sine",
+  portamento: 0,
+});
+
+// ################################################################# ROUTING SUGGESTIONS
+// SENDS SYNTH CHAIN TO OUPUT
+synth.chain(gainNode1);
+//synth2.chain(gainNode2);
+//synth3.chain(gainNode3);
+
 
 // synth1 - 6 autoFilter, synth 7-10 feedbackDelay, synth 11-16 autoFilter + automated sustain
 //const synth = new Tone.AMSynth().connect(autoFilter1);
