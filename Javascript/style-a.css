@@ -158,7 +158,8 @@ a:hover {
 }
 #loops2 {
 
-
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
   text-align: left;
 }
 
