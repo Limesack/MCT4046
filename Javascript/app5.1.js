@@ -174,7 +174,7 @@ const synth = new Tone.DuoSynth({
     sustain: 1,
   },
   Detune: {
-    cents: 10
+    cents: 100
   },
 });
 
