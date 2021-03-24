@@ -148,7 +148,7 @@ const reverb = new Tone.Reverb({
   decay: 1,
   preDelay:0.02,
   wet: 0.5,
-});
+}).start();
 
 // CHORUS
 const chorus = new Tone.Chorus({
@@ -208,6 +208,8 @@ const synth = new Tone.DuoSynth({
   },
   harmonicity: 2, // 2 = 1 oscilator en oktav over den andre, 1 = unison
   Detune: 10,
+  vibratoAmount: 0,
+  vibratoRate: 0,
 });
 
 
