@@ -288,9 +288,7 @@ const synth16 = new Tone.FMSynth().connect(phaser16);
       cv = document.querySelector("#cv");
       c = cv.getContext("2d");
   
-  /*     pre1 = document.querySelector("pre1")
-      pre2 = document.querySelector("pre2")
-      pre3 = document.querySelector("pre3") */
+      // This is where the pixelated image will be placed in the HTML
       pre = document.querySelector("pre")
   
       //img1 = new Image();
@@ -369,13 +367,11 @@ const synth16 = new Tone.FMSynth().connect(phaser16);
       let whiteness = [];
   
       for (var i = 0; i < imgData.data.length; i += 4) {
-          //msg += "\npixel red " + count + ": " + imgData.data[i];
-          //msg += "\npixel green " + count + ": " + imgData.data[i+1];
-          //msg += "\npixel blue " + count + ": " + imgData.data[i+2];
-          //msg += "\npixel alpha " + count + ": " + imgData.data[i+3] + "\n";
-          rValues += Math.floor(imgData.data[i]/2) + " ";
-          gValues += Math.floor(imgData.data[i+1]/2) + " ";
-          bValues += Math.floor(imgData.data[i+2]/2) + " ";
+
+        // Individual r, g and b values are not used, but is good to keep for later
+        //   rValues += Math.floor(imgData.data[i]) + " ";
+        //   gValues += Math.floor(imgData.data[i+1]) + " ";
+        //   bValues += Math.floor(imgData.data[i+2]) + " ";
   
   // Getting brightness values of pixels:
           highest = Math.max((imgData.data[i]), (imgData.data[i+1]), (imgData.data[i+2]) );
@@ -514,23 +510,23 @@ coldColours = coldColours.split(" ");
   brightness15 = sliceAndMultiply(14, brightness);
   brightness16 = sliceAndMultiply(15, brightness);
   
-  // converting the arrays to arrays determing on and off of midi values
-  let Arraybrightness1 = onOffValues(brightness1, 72);
-  let Arraybrightness2 = onOffValues(brightness2, 71);
-  let Arraybrightness3 = onOffValues(brightness3, 69);
-  let Arraybrightness4 = onOffValues(brightness4, 67);
-  let Arraybrightness5 = onOffValues(brightness5, 65);
-  let Arraybrightness6 = onOffValues(brightness6, 64);
-  let Arraybrightness7 = onOffValues(brightness7, 62);
-  let Arraybrightness8 = onOffValues(brightness8, 60);
-  let Arraybrightness9 = onOffValues(brightness9, 59);
-  let Arraybrightness10 = onOffValues(brightness10, 57);
-  let Arraybrightness11 = onOffValues(brightness11, 55);
-  let Arraybrightness12 = onOffValues(brightness12, 53);
-  let Arraybrightness13 = onOffValues(brightness13, 52);
-  let Arraybrightness14 = onOffValues(brightness14, 50);
-  let Arraybrightness15 = onOffValues(brightness15, 48);
-  let Arraybrightness16 = onOffValues(brightness16, 47);
+  // converting the arrays to arrays determing on and off of midi values. One array per horizontal line of the image.
+  let Arraybrightness1 = onOffValues(brightness1, 62);
+  let Arraybrightness2 = onOffValues(brightness2, 61);
+  let Arraybrightness3 = onOffValues(brightness3, 59);
+  let Arraybrightness4 = onOffValues(brightness4, 57);
+  let Arraybrightness5 = onOffValues(brightness5, 55);
+  let Arraybrightness6 = onOffValues(brightness6, 54);
+  let Arraybrightness7 = onOffValues(brightness7, 52);
+  let Arraybrightness8 = onOffValues(brightness8, 50);
+  let Arraybrightness9 = onOffValues(brightness9, 49);
+  let Arraybrightness10 = onOffValues(brightness10, 47);
+  let Arraybrightness11 = onOffValues(brightness11, 45);
+  let Arraybrightness12 = onOffValues(brightness12, 43);
+  let Arraybrightness13 = onOffValues(brightness13, 42);
+  let Arraybrightness14 = onOffValues(brightness14, 40);
+  let Arraybrightness15 = onOffValues(brightness15, 38);
+  let Arraybrightness16 = onOffValues(brightness16, 37);
   
   // converting brightness arrays to frequencies
   Arraybrightness1 = arrayToFreq(Arraybrightness1);
@@ -556,14 +552,21 @@ coldColours = coldColours.split(" ");
   const seq = new Tone.Sequence((time, note) => {
   
       var time2 = time * 4;
-  
+      
       var i = Math.floor(time2 % brightness1.length);
   
-      gainNode1.gain.rampTo(brightness1[i], 0.2);
-      // Harmonicity determined by warmness of prior pixel
+
+
+      // Harmonicity for DuoSynth determined by warmness of prior pixel
       synth.harmonicity.value = warmColours1[i-1];
 
+      // Gain value for individual line pixel triggered by brightness value
+      gainNode1.gain.rampTo(brightness1[i], 0.2);
+
+      // Individual filter wet value triggered by coldness of colour next to pixel
       autoFilter1.wet.value = coldColours1[i+1];
+
+      // Release value triggered by whiteness of pixel below
       synth.triggerAttackRelease(note, whiteness2[i], time);
   
   
@@ -574,14 +577,13 @@ coldColours = coldColours.split(" ");
       var time2 = time * 4;
   
       var i = Math.floor(time2 % brightness2.length);
-  
-      gainNode2.gain.rampTo(brightness2[i], 0.2);
 
+  // Synth 2-4 follows the same pattern:
+      gainNode2.gain.rampTo(brightness2[i], 0.2);
       autoFilter2.wet.value = coldColours2[i+1];
       synth2.triggerAttackRelease(note, whiteness3[i], time);
   
   
-      // subdivisions are given as subarrays
   }, Arraybrightness2).start(0);
   
   const seq3 = new Tone.Sequence((time, note) => {
@@ -592,10 +594,8 @@ coldColours = coldColours.split(" ");
   
       gainNode3.gain.rampTo(brightness3[i], 0.2);
       autoFilter3.wet.value = coldColours3[i+1];
-
       synth3.triggerAttackRelease(note, whiteness4[i], time);
-  
-      // subdivisions are given as subarrays
+
   }, Arraybrightness3).start(0);
   
   const seq4 = new Tone.Sequence((time, note) => {
@@ -606,10 +606,9 @@ coldColours = coldColours.split(" ");
   
       gainNode4.gain.rampTo(brightness4[i], 0.2);
       autoFilter4.wet.value = coldColours4[i+1];
-
       synth4.triggerAttackRelease(note, whiteness5[i], time);
   
-      // subdivisions are given as subarrays
+
   }, Arraybrightness4).start(0);
   
   const seq5 = new Tone.Sequence((time, note) => {
@@ -617,12 +616,12 @@ coldColours = coldColours.split(" ");
       var time2 = time * 4;
   
       var i = Math.floor(time2 % brightness5.length);
-  
-      gainNode5.gain.rampTo(brightness5[i], 0.2);
-      feedbackDelay5.wet.value = coldColours5[i+1];
+
+      // Modulation value for FMSynth determined by warmness of prior pixel
       synth5.modulation.value = warmColours5[i-1];
 
-
+      gainNode5.gain.rampTo(brightness5[i], 0.2);
+      feedbackDelay5.wet.value = coldColours5[i+1];
       synth5.triggerAttackRelease(note, whiteness6[i], time);
   
   
