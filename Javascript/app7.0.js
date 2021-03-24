@@ -204,8 +204,8 @@ synth.chain(chorus, reverb, gainNode1);
 
 // synth1 - 6 autoFilter, synth 7-10 feedbackDelay, synth 11-16 autoFilter + automated sustain
 //const synth = new Tone.AMSynth().connect(autoFilter1);
-const synth2 = new Tone.FMSynth().connect(autoFilter2);
-const synth3 = new Tone.AMSynth().connect(autoFilter3);
+//const synth2 = new Tone.FMSynth().connect(autoFilter2);
+//const synth3 = new Tone.AMSynth().connect(autoFilter3);
 const synth4 = new Tone.FMSynth().connect(autoFilter4);
 const synth5 = new Tone.AMSynth().connect(autoFilter5);
 const synth6 = new Tone.FMSynth().connect(autoFilter6);
