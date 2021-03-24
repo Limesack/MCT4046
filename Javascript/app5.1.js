@@ -207,10 +207,7 @@ const synth = new Tone.DuoSynth({
     sustain: 1,
   },
   harmonicity: 2, // 2 = 1 oscilator en oktav over den andre, 1 = unison
-  /*
-  Detune: {
-    cents: 10, // SIKKERT FEIL
-  },*/
+  Detune: 10,
 });
 
 
