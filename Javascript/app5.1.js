@@ -174,7 +174,7 @@ const synth = new Tone.DuoSynth({
     sustain: 1,
   },/*
   Detune: {
-    cents: 10,
+    cents: 10, // SIKKERT FEIL
   },*/
 });
 // 2 = 1 oscilator en oktav over den andre, 1 = unison
@@ -184,23 +184,34 @@ const synth = new Tone.DuoSynth({
 
 // SYNTH 2
 const synth2 = new Tone.PluckSynth({
-  attackNoise: {1},  // RANGE 0.1-20
-  dampening: {3500}, // LP FILTRE COMB FILTRE DAPM- 0-7000
-  release: {0.3},      // time to reach 0
-  resonance: {1},    // sustain duration
+  attackNoise: 1,  // RANGE 0.1-20
+  dampening: 3500, // LP FILTRE COMB FILTRE DAPM- 0-7000
+  release: 0.3,      // time to reach 0
+  resonance: 1,    // sustain duration
 });
 
 
 
 
 
-
+// SYNTH 3
+const synth = new Tone.Synth({
+  detune: "+5",
+  envelope: {
+    attack: 0.005,
+    decay: 0.1,
+    release: 1,
+    sustain: 0.3,
+  },
+  portamento: 0.02,
+  volume: -2,
+});
 
 
 // SENDS SYNTH CHAIN TO OUPUT
 synth.chain(chorus, autoFilter1);
 synth2.chain(gainNode2);
-
+synth3.chain(gainNode3);
 
 
 
