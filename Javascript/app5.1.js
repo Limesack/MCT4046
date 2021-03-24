@@ -147,7 +147,7 @@ const synth16 = new Tone.Sampler({
 
 //const synth = new Tone.FMSynth().connect(autoFilter1);
 
-
+// SYNTH 1
 const chorus = new Tone.Chorus(4, 2.5, 0.5).start();
 const synth = new Tone.DuoSynth({
 	oscillator: {
@@ -178,13 +178,33 @@ const synth = new Tone.DuoSynth({
   },*/
 });
 // 2 = 1 oscilator en oktav over den andre, 1 = unison
-// DuoSynth.harmonicity.value = 2;
+// Synth.harmonicity.value = 2;
+
+
+
+// SYNTH 2
+const synth2 = new Tone.PluckSynth({
+  attackNoise: {1},  // RANGE 0.1-20
+  dampening: {3500}, // LP FILTRE COMB FILTRE DAPM- 0-7000
+  release: {0.3},      // time to reach 0
+  resonance: {1},    // sustain duration
+});
+
+
+
+
+
+
+
 
 // SENDS SYNTH CHAIN TO OUPUT
 synth.chain(chorus, autoFilter1);
+synth2.chain(gainNode2);
 
 
 
+
+/*
 const synth3 = new Tone.FMSynth().connect(autoFilter2);
 const synth5 = new Tone.FMSynth().connect(autoFilter3);
 const synth7 = new Tone.FMSynth().connect(autoFilter4);
@@ -201,7 +221,7 @@ const synth10 = new Tone.FMSynth().connect(autoFilter);
 const synth12 = new Tone.FMSynth().connect(autoFilter);
 const synth14 = new Tone.AMSynth().connect(autoFilter);
 const synth16 = new Tone.AMSynth().connect(autoFilter);
-
+*/
 
 let brightness = [];
 let brightness2 = [];
