@@ -205,6 +205,8 @@ background-color: #ccde0758;
 
 .range
 {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
     cursor: pointer;
     width: 150px !important;
     -webkit-appearance: none;
