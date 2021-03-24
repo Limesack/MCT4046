@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head> 
+    <head>
         <title>Pixel Sequencer</title>
 
         <link href="style-a.css" rel="stylesheet">
@@ -26,13 +26,13 @@
 
     <p>Vertical dimentions:</p>
     <div class="range-wrap">
-    <input type="range" min="1" max="16" value="1" step="1" class="range" id="scaledHeight"> 
+    <input type="range" min="1" max="16" value="1" step="1" class="range" id="scaledHeight">
     <output class="bubble"></output>
     </div>
 
     <p>Sensitivity</p>
     <div class="range-wrap">
-    <input type="range" min="0.05" max="0.60" value="0.20" step="0.01" class="range" id="sensitivity"> 
+    <input type="range" min="0.05" max="0.60" value="0.20" step="0.01" class="range" id="sensitivity">
     <output class="bubble"></output>
     </div>
     </div>
@@ -40,23 +40,23 @@
 
 
 <div id="loops">
-    
+
     <p>Extract the pixels of the following image:</p>
     <br><br><input type='file' />
     <canvas id="cv" width="100" height="33"></canvas>
 </div>
 <img id="myImg" src="#">
     <tone-play-toggle></tone-play-toggle>
-    <tone-slider label="tempo" units="bpm" min="60" max="240" value="120" class="range"></tone-slider>
-                
+    <tone-slider label="Tempo" units="bpm" min="60" max="240" value="120" class="range"></tone-slider>
+
 
    <p>Main Volume</p>
    <div class="range-wrap">
-   <input type="range" min="0" max="0.9" value="0.10" step="0.01" class="range" id="volume"> 
+   <input type="range" min="0" max="0.9" value="0.10" step="0.01" class="range" id="volume">
    <output class="bubble"></output>
 </div>
 
-  
+
                 <tone-step-sequencer></tone-step-sequencer>
                 <div id="loops2">
                 <pre></pre><br></div>
@@ -77,6 +77,6 @@
         <script src="sliderCode.js"> </script>
         <script src="app8.1.js"> </script>
 <!--         <script src="synth2.js"> </script> -->
-       
+
     </body>
 </html>

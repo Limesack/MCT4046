@@ -1,6 +1,6 @@
 body {
   margin: 20px;
-  font-family: monospace;
+  font-family: 'Courier New', monospace;
   font-size: 25px;
   color: #000000;
   font-style: normal;
@@ -12,7 +12,7 @@ body {
   }
 
 #myImg {
-
+  font-family: 'Courier New', monospace;
   max-width: 300px ;
   max-height: 300px ;
 }
@@ -142,6 +142,7 @@ a:hover {
 #loops {
 
   display: inline-block;
+  font-family: 'Courier New', monospace;
   vertical-align:top;
 
 
