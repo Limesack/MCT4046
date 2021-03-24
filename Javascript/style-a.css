@@ -13,6 +13,7 @@ body {
 
 #myImg {
   font-family: 'Courier New', monospace;
+  font-weight: bold;
   max-width: 300px ;
   max-height: 300px ;
 }
@@ -20,6 +21,7 @@ body {
 #button  {
   background-color: #5b0058;
   font-family: 'Courier New', monospace;
+  font-weight: bold;
   border-radius: 17px;
   color: #ccde07;
   padding: 10px 20px;
@@ -130,6 +132,7 @@ a:hover {
 #pitchBox {
   display: inline-block;
   font-family: 'Courier New', monospace;
+  font-weight: bold;
   vertical-align:left;
   width:250px;
   max-width:300px;
@@ -143,6 +146,7 @@ a:hover {
 
   display: inline-block;
   font-family: 'Courier New', monospace;
+  font-weight: bold;
   vertical-align:top;
 
 
