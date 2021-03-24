@@ -157,7 +157,7 @@ const synth = new Tone.DuoSynth({
     attack: 0.405,
     decay: 0.1,
     release: 1,
-  //  sustain: 0.9,
+    sustain: 0.9,
 	},
 	filter: {
     Q: 1,
@@ -178,7 +178,7 @@ const synth = new Tone.DuoSynth({
   },
 });
 
-//DuoSynth.harmonicity.value = 2;
+DuoSynth.harmonicity.value = 2;
 
 // SENDS SYNTH CHAIN TO OUPUT
 synth.chain(chorus, autoFilter1);
