@@ -177,7 +177,7 @@ const ppdelay = new Tone.PingPongDelay({
   delayTime: 100,
   Feedback: 33,
   wet: 0.5,
-}).start();
+});
 
 
 // SYNTHS
