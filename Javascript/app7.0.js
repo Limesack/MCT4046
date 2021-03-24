@@ -161,7 +161,7 @@ const synth = new Tone.DuoSynth({
   Detune: 0,
   vibratoAmount: 0,
   vibratoRate: 0,
-  portamento: 0,
+//  portamento: 0,
 });
 
 
