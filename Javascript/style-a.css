@@ -129,6 +129,7 @@ a:hover {
 
 #pitchBox {
   display: inline-block;
+  font-family: 'Courier New', monospace;
   vertical-align:left;
   width:250px;
   max-width:300px;
