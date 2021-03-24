@@ -172,13 +172,13 @@ const synth = new Tone.DuoSynth({
     octaves: 3,
     release: 2,
     sustain: 1,
-  },/*
+  },
   Detune: {
     cents: 10
-  },*/
+  },
 });
 
-duoSynth.harmonicity.value = 2;
+DuoSynth.harmonicity.value = 2;
 
 // SENDS SYNTH CHAIN TO OUPUT
 synth.chain(chorus, autoFilter1);
