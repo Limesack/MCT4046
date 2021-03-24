@@ -195,7 +195,7 @@ const synth2 = new Tone.PluckSynth({
 
 
 // SYNTH 3
-const synth3 = new Tone.Synth({
+const synth3 = new Tone.FMSynth({
   detune: 10,
   envelope: {
     attack: 0.005,
@@ -203,8 +203,16 @@ const synth3 = new Tone.Synth({
     release: 1,
     sustain: 0.3,
   },
-  portamento: 0.02,
-  volume: -2,
+  harmonicity: 1,
+  modulation: 1,
+  modulationEnvelope: {
+    attack: 0.005,
+    decay: 0.1,
+    release: 1,
+    sustain: 0.3,
+  },
+  oscillator: "sine",
+  portamento : 0,
 });
 
 
