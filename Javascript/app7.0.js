@@ -150,14 +150,14 @@ const synth = new Tone.DuoSynth({
 	},
   filterEnvelope: {
     attack: 0.05,
-    baseFrequency: 200,
+    baseFrequency: 100,
     decay: 0.1,
     exponent: 2,
     octaves: 3,
     sustain: 0.1,
     release: 0.5,
   },
-  harmonicity: 1, // 2 = 1 oscilator en oktav over den andre, 1 = unison
+  harmonicity: 0.5, // 2 = 1 oscilator en oktav over den andre, 1 = unison
   Detune: 0,
   vibratoAmount: 0,
   vibratoRate: 0,
