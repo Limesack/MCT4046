@@ -140,8 +140,8 @@ const synth = new Tone.DuoSynth({
 	envelope: {
     attack: 0.05,
     decay: 0.1,
-    release: 1,
     sustain: 0.9,
+    release: 1,
 	},
 	filter: {
     Q: 1,
@@ -157,10 +157,11 @@ const synth = new Tone.DuoSynth({
     release: 2,
     sustain: 1,
   },
-  harmonicity: 2, // 2 = 1 oscilator en oktav over den andre, 1 = unison
-  Detune: 10,
+  harmonicity: 1, // 2 = 1 oscilator en oktav over den andre, 1 = unison
+  Detune: 5,
   vibratoAmount: 0,
   vibratoRate: 0,
+  portamento: 0,
 });
 
 
@@ -197,7 +198,7 @@ const synth3 = new Tone.FMSynth({
 
 // ################################################################# ROUTING SUGGESTIONS
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(chorus, reverb, gainNode1);
+synth.chain(gainNode1);
 //synth2.chain(gainNode2);
 //synth3.chain(gainNode3);
 
