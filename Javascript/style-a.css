@@ -1,11 +1,12 @@
 body {
   margin: 20px;
-  font-family: 'Courier New', monospace;
+  font-family: monospace;
   font-size: 25px;
   color: #000000;
+  font-style: normal;
   text-align: center;
   background-image: url("pxlback4.png");
-  background-color: #00FF53;
+  background-color: #00FF33;
   font-size: 100%;
 
   }
