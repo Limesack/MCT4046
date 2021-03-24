@@ -140,7 +140,7 @@ const synth = new Tone.DuoSynth({
 	envelope: {
     attack: 0.05,
     decay: 0.1,
-    sustain: 1
+    sustain: 1,
     release: 1,
 	},
 	filter: {
