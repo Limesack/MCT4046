@@ -141,14 +141,47 @@ const synth16 = new Tone.Sampler({
 
 }).connect(autoFilter); */
 
-//synths:
+
+// EFFECTS
+// REVERB
+const reverb = new Tone.Reverb({
+  decay: 1,
+  preDelay:0.02,
+  wet: 0.5,
+});
+
+// CHORUS
+const chorus = new Tone.Chorus({
+  delayTime: 4,
+  depth: 2.5,
+  frequency: 0.5,
+  feedback: 0,
+  spread: 0,
+  type: "triangle",
+  wet: 0.5,
+}).start();
 
 
+// PHASER
+const phaser = new Tone.Phaser({
+	frequency: 15,
+	octaves: 5,
+	baseFrequency: 1000,
+  //Q: 1,
+  wet: 0.5,
+});
 
-//const synth = new Tone.FMSynth().connect(autoFilter1);
 
+// PING PONG DELAY
+const ppdelay = new Tone.PingPongDelay({
+  delayTime: 100,
+  Feedback: 33,
+  wet: 0.5,
+});
+
+
+// SYNTHS
 // SYNTH 1
-const chorus = new Tone.Chorus(4, 2.5, 0.5).start();
 const synth = new Tone.DuoSynth({
 	oscillator: {
 		type: "sawtooth",
@@ -172,26 +205,22 @@ const synth = new Tone.DuoSynth({
     octaves: 3,
     release: 2,
     sustain: 1,
-  },/*
-  Detune: {
-    cents: 10, // SIKKERT FEIL
-  },*/
+  },
+  harmonicity: 2, // 2 = 1 oscilator en oktav over den andre, 1 = unison
+  Detune: 10,
+  vibratoAmount: 0,
+  vibratoRate: 0,
 });
-// 2 = 1 oscilator en oktav over den andre, 1 = unison
-// Synth.harmonicity.value = 2;
 
 
-// INGEN LYD, TRENGER TRIGGERATTACK; IKKE triggerAttackRelease
 // SYNTH 2
+// INGEN LYD, TRENGER TRIGGERATTACK; IKKE triggerAttackRelease
 const synth2 = new Tone.PluckSynth({
   attackNoise: 1,  // RANGE 0.1-20
   dampening: 3500, // LP FILTRE COMB FILTRE DAPM- 0-7000
   release: 0.3,      // time to reach 0
   resonance: 1,    // sustain duration
 });
-
-
-
 
 
 // SYNTH 3
@@ -212,12 +241,12 @@ const synth3 = new Tone.FMSynth({
     sustain: 0.3,
   },
   oscillator: "sine",
-  portamento : 0,
+  portamento: 0,
 });
 
 
 // SENDS SYNTH CHAIN TO OUPUT
-synth.chain(chorus, gainNode1);
+synth.chain(gainNode1);
 //synth2.chain(gainNode2);
 //synth3.chain(gainNode3);
 
