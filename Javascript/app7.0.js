@@ -94,9 +94,9 @@ const feedbackDelay10 = new Tone.FeedbackDelay("8n", 0.5).connect(gainNode10);
 // EFFECTS
 // REVERB
 const reverb = new Tone.Reverb({
-  decay: 2.6,
+  decay: 3,
   preDelay:0.01,
-  wet: 0.25,
+  wet: 0.15,
 });
 
 
@@ -124,7 +124,7 @@ const phaser = new Tone.Phaser({
 
 // PING PONG DELAY
 const ppdelay = new Tone.PingPongDelay({
-  delayTime: 0.100,
+  delayTime: 0.200,
   Feedback: 0.3,
   wet: 0.5,
 });
