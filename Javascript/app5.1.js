@@ -169,7 +169,7 @@ const phaser = new Tone.Phaser({
 	baseFrequency: 1000,
   //Q: 1,
   wet: 0.5,
-}).start();
+});
 
 
 // PING PONG DELAY
