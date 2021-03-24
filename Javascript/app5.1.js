@@ -195,7 +195,7 @@ const synth2 = new Tone.PluckSynth({
 
 
 // SYNTH 3
-const synth = new Tone.Synth({
+const synth3 = new Tone.Synth({
   detune: 10,
   envelope: {
     attack: 0.005,
