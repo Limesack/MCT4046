@@ -124,8 +124,8 @@ const phaser = new Tone.Phaser({
 
 // PING PONG DELAY
 const ppdelay = new Tone.PingPongDelay({
-  delayTime: 0.200,
-  Feedback: 0.3,
+  delayTime: 0.18,
+  Feedback: 0.08,
   wet: 0.5,
 });
 
@@ -158,7 +158,7 @@ const synth = new Tone.DuoSynth({
     sustain: 1,
   },
   harmonicity: 2, // 2 = 1 oscilator en oktav over den andre, 1 = unison
-  Detune: 3,
+  Detune: 0,
   vibratoAmount: 0,
   vibratoRate: 0,
   portamento: 0,
