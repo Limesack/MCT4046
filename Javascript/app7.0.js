@@ -140,8 +140,8 @@ const synth = new Tone.DuoSynth({
 	envelope: {
     attack: 0.05,
     decay: 0.1,
-    sustain: 0.2,
-    release: 1,
+    sustain: 0.5,
+    release: 0.5,
 	},
 	filter: {
     Q: 1,
@@ -154,8 +154,8 @@ const synth = new Tone.DuoSynth({
     decay: 0.1,
     exponent: 2,
     octaves: 3,
-    sustain: 0.2,
-    release: 1,
+    sustain: 0.5,
+    release: 0.5,
   },
   harmonicity: 1, // 2 = 1 oscilator en oktav over den andre, 1 = unison
   Detune: 0,
