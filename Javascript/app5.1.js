@@ -210,7 +210,7 @@ const synth3 = new Tone.Synth({
 
 // SENDS SYNTH CHAIN TO OUPUT
 //synth.chain(chorus, autoFilter1);
-synth2.chain(gainNode2);
+synth2.chain(autoFilter2);
 //synth3.chain(gainNode3);
 
 
