@@ -1,6 +1,6 @@
-var scaledHeight = 1;
+var scaledHeight = 5;
 var scaledWidth = 16;
-var sensiScale = 0.2;
+var sensiScale = 0.3;
 //var sustain = 0.1;
 
 
