@@ -385,6 +385,8 @@ const synth16 = new Tone.FMSynth().connect(phaser16);
           count++;
       }
   // Arrays for lightness
+
+
   whiteness = whiteness.split(" ");
   whiteness.pop();
   let whiteness1 = sliceAndMultiply(0, whiteness);
@@ -403,9 +405,7 @@ const synth16 = new Tone.FMSynth().connect(phaser16);
   let whiteness14 = sliceAndMultiply(13, whiteness);
   let whiteness15 = sliceAndMultiply(14, whiteness);
   let whiteness16 = sliceAndMultiply(15, whiteness);
-  console.log(whiteness1);
-  console.log(whiteness2);
-  console.log(whiteness3);
+  console.log(whiteness16);
   
   // Array for warm colours
   warmColours = warmColours.split(" ");
