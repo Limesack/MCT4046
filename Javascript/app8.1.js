@@ -1,5 +1,6 @@
 // This is the code for Image pixel sequencer.
-// versjo n7: gjør koden enklere. bare én gain, bare en effekt
+// Made by Anders Lidal, Mari Lesteberg and Sebastian Olsen, spring 2021 for the course MCT4046 Sonification.
+//
 
 // Sequencer code borrowed from Tone.js examples https://tonejs.github.io/examples/stepSequencer:
 const keys = new Tone.Players({
@@ -135,7 +136,12 @@ const phaser16 = new Tone.Phaser({
   
   // ################################################################# INSTRUMENTS
   
-  // SYNTHS
+  // SYNTHS ///
+  // 16 synths in total: synth and synth9 are DuoSynths and synth5 and synth13 are FMsynths with some predetermined values,
+  // and some values that are changed by the dataset (harmonicity and modulation value).
+  // The rest of the synths are simple FMsynths. Synth 1-4 are routed to autoFilter, synth 5-8 routed to feedbackDelay, 
+  // synth 9-12 routed to Reverb and synth 13-16 routed to Phasor.
+
   // SYNTH 1
   const synth = new Tone.DuoSynth({
       oscillator: {
@@ -166,10 +172,7 @@ const phaser16 = new Tone.Phaser({
     vibratoAmount: 0,
     vibratoRate: 0,
   }).connect(autoFilter1);
-  
-  
-  
-  // synth1 - 6 autoFilter, synth 7-10 feedbackDelay, synth 11-16 autoFilter + automated sustain
+
   //const synth = new Tone.AMSynth().connect(autoFilter1);
   const synth2 = new Tone.AMSynth().connect(autoFilter2);
   const synth3 = new Tone.AMSynth().connect(autoFilter3);
@@ -262,6 +265,8 @@ const synth14 = new Tone.FMSynth().connect(phaser14);
 const synth15 = new Tone.AMSynth().connect(phaser15);
 const synth16 = new Tone.FMSynth().connect(phaser16);
   
+
+//// VARIABLES FOR IMAGE PARAMETERS: 
   // 16 brightness arrays
   let brightness = [];
   let brightness2 = [];
@@ -291,10 +296,8 @@ const synth16 = new Tone.FMSynth().connect(phaser16);
       // This is where the pixelated image will be placed in the HTML
       pre = document.querySelector("pre")
   
-      //img1 = new Image();
       img1.crossOrigin = "Anonymous"; // to bypass cors for imgur image link
   
-      //img1.src = 'assets/colours.jpg';
       img1.src = URL.createObjectURL(this.files[0]); // set src to blob url
   
       img1.onload = function() {
@@ -384,9 +387,8 @@ const synth16 = new Tone.FMSynth().connect(phaser16);
   
           count++;
       }
-  // Arrays for lightness
 
-
+  // Arrays for whitewhess
   whiteness = whiteness.split(" ");
   whiteness.pop();
   let whiteness1 = sliceAndMultiply(0, whiteness);
@@ -407,7 +409,7 @@ const synth16 = new Tone.FMSynth().connect(phaser16);
   let whiteness16 = sliceAndMultiply(15, whiteness);
   console.log(whiteness16);
   
-  // Array for warm colours
+  // Array for warm colours. Not all of the arrays are used, but saving them for later.
   warmColours = warmColours.split(" ");
   warmColours.pop();
   let warmColours1 = sliceAndMultiply(0, warmColours);
@@ -546,8 +548,8 @@ coldColours = coldColours.split(" ");
   Arraybrightness15 = arrayToFreq(Arraybrightness15);
   Arraybrightness16 = arrayToFreq(Arraybrightness16);
   
+/////// Below you will find the 16 separate functions that controls each line of the sequencer:
   
-  // Functions for the 16 different sequences:
   
   const seq = new Tone.Sequence((time, note) => {
   

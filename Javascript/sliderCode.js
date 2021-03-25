@@ -1,15 +1,20 @@
+// This code contains variables and code for sliders only. 
+
+// variables for the different sliders
 var scaledHeight = 5;
 var scaledWidth = 16;
 var sensiScale = 0.3;
 //var sustain = 0.1;
 
-
+// Getting the sliders from the HTML document
 let heightslider = document.getElementById("scaledHeight");
 let witdthslider = document.getElementById("scaledWidth");
 let sensitivity = document.getElementById("sensitivity");
 //let sustainSlider = document.getElementById("sustain");
 let volumeSlider = document.getElementById("volume");
 
+
+/// Code that outputs number value from the slider
 const allRanges = document.querySelectorAll(".range-wrap");
 allRanges.forEach(wrap => {
   const range = wrap.querySelector(".range");
@@ -32,6 +37,8 @@ function setBubble(range, bubble) {
   bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
 }
 
+
+// Functions for using incoming numbers from each of the sliders:
 witdthslider.oninput = function() {
     scaledWidth = this.value;
 
