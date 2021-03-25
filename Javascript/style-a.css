@@ -139,6 +139,14 @@ a:hover {
   text-align: left;
 
 }
+
+#volume {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+
+  text-align: center;
+
+}
 #loops {
 
   display: inline-block;
